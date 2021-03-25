@@ -36,9 +36,13 @@ export default function Tabla() {
       'Access-Control-Allow-Origin' : '*',
       'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
     }
-    await axios.get('http://localhost:3000/data', {headers: headers}).then(response => {
+    await axios.get('https://componentes-web-page.herokuapp.com/data', {headers: headers}).then(response => {
         setData(toRow(response.data))
     });
+  }
+
+  const delData = async () => {
+    
   }
 
 
