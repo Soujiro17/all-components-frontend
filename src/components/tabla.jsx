@@ -40,6 +40,8 @@ export default function Tabla() {
     }
     await axios.get(process.env.API_URL, {headers: headers}).then(response => {
         setData(toRow(response.data))
+        console.log(response)
+        console.log(response.data)
     });
   }
 
