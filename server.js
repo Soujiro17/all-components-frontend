@@ -30,7 +30,7 @@ function verifyToken(req, res, next){
     const bearerToken = req.headers['authorization'];
 
     if(typeof bearerToken !== 'undefined' && bearerToken !== ''){
-        if(bearerToken === process.env.TOKEN){
+        if(bearerToken === process.env.REACT_APP_API){
             next()
         }else{
             res.send(403)
