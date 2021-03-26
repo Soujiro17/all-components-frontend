@@ -38,8 +38,6 @@ export default function Tabla() {
       'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       'Authorization': process.env.REACT_APP_API
     }
-    console.log(process.env.REACT_APP_API)
-    console.log(process.env.REACT_APP_API_URL)
     try{
       await axios.get(process.env.REACT_APP_API_URL, {headers: headers}).then(response => {
           setData(toRow(response.data))
