@@ -5,7 +5,8 @@ const morgan = require('morgan');
 const path = require("path");
 const port = process.env.PORT;
 const fs = require("fs");
-var cors = require('cors');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const info = require('./routes/route');
 
@@ -25,10 +26,9 @@ function jsonReader(filePath, cb) {
 }
 
 app.use(morgan('dev'));
-app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: false, limit: '50mb'}));
 app.use(express.json());
 app.use(cors());
-app.use(express.bodyParser({limit: '50mb'}));
 app.use("/data/", info)
 app.set('json spaces', 2)
 
