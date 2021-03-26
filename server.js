@@ -27,11 +27,9 @@ function jsonReader(filePath, cb) {
 
 function verifyToken(req, res, next){
 
-    const bearerHeader = req.headers['authorization'];
-    console.log(bearerHeader)
+    const bearerToken = req.headers['authorization'];
 
-    if(typeof bearerHeader !== 'undefined'){
-        const bearerToken = bearerHeader.split(" ")[1];
+    if(typeof bearerToken !== 'undefined' && bearerToken !== ''){
         if(bearerToken === process.env.TOKEN){
             next()
         }else{
