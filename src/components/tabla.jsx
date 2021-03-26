@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { XGrid } from '@material-ui/x-grid';
 import axios from 'axios'
+require('dotenv').config()
 
 const columns = [
     { field: 'id', headerName: 'id', width: 50 },
@@ -36,23 +37,18 @@ export default function Tabla() {
       'Access-Control-Allow-Origin' : '*',
       'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
     }
-    await axios.get('https://componentes-web-page.herokuapp.com/data', {headers: headers}).then(response => {
+    await axios.get(process.env.API_URL, {headers: headers}).then(response => {
         setData(toRow(response.data))
     });
   }
-
-  const delData = async () => {
-    
-  }
-
-
 
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <XGrid
         rows={data} 
-        columns={columns} 
-        pageSize={15} 
+        columns={columns}
+        pagination 
+        pageSize={15}
         />
     </div>
   );

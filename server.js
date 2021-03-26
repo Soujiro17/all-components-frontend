@@ -11,6 +11,9 @@ const bodyParser = require('body-parser');
 const info = require('./routes/route');
 
 
+
+// ----------------------- FUNCTIONS ----------------------//
+
 function jsonReader(filePath, cb) {
     fs.readFile(filePath, (err, fileData) => {
         if (err) {
@@ -25,6 +28,27 @@ function jsonReader(filePath, cb) {
     })
 }
 
+function verifyToken(req, res, next){
+
+    const bearerHeader = req.headers['authorization'];
+
+    if(typeof bearerHeader !== 'undefined'){
+        const bearerToken = bearerHeader.split(" ")[1];
+        if(bearerToken === process.env.TOKEN){
+            next()
+        }else{
+            res.send(403)
+        }
+    }else{
+        res.sendStatus(403)
+    }
+
+
+}
+
+
+// ------------------------ SERVER SIDE ------------------------ //
+
 app.use(morgan('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 1000000}));
@@ -32,6 +56,9 @@ app.use(express.json());
 app.use(cors());
 app.use("/data/", info)
 app.set('json spaces', 2)
+
+
+// ------------------------------------------------------------ //
 
 app.get("/", (req, res) => {
   const filePath = path.resolve(__dirname, `./build`, "index.html");
@@ -46,11 +73,9 @@ app.get("/", (req, res) => {
 
 app.use(express.static(path.resolve(__dirname, `./build`)));
 
-app.post("/", (req, res) => {
+app.post("/", verifyToken, (req, res) => {
+    
     const data = req.body
-
-    console.log(data)
-
     jsonReader('./data.json', (err, customer) => {
         if (err) {
             console.log('Error reading file:',err)
@@ -79,9 +104,9 @@ app.post("/", (req, res) => {
     
 })
 
-app.post("/del", (req, res) => {
+app.post("/del", verifyToken, (req, res) => {
+    
     const data = req.body
-
     const empty = { 
         "products": [], 
         "prices": [], 
@@ -96,11 +121,7 @@ app.post("/del", (req, res) => {
     console.log("deleted")
     return res.send("deleted")
 
-    
 })
-
-
-
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
