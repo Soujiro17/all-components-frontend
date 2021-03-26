@@ -36,15 +36,15 @@ export default function Tabla() {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin' : '*',
       'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-      'Authorization': process.env.TOKEN
+      'Authorization': process.env.REACT_APP_API
     }
-    await axios.get(process.env.API_URL, {headers: headers}).then(response => {
-        setData(toRow(response.data))
-        console.log(response)
-        console.log(response.data)
-        console.log(process.env.API_URL)
-        console.log(typeof process.env.API_URL)
-    });
+    try{
+      await axios.get(process.env.REACT_APP_API_URL, {headers: headers}).then(response => {
+          setData(toRow(response.data))
+      });
+    }catch(err){
+      console.log("error:", err)
+    }
   }
 
   return (
