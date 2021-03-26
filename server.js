@@ -29,13 +29,17 @@ function verifyToken(req, res, next){
 
     const bearerToken = req.headers['authorization'];
 
+    console.log("\n\nTOKEN")
+    console.log(bearerToken + "\n\n")
     if(typeof bearerToken !== 'undefined' && bearerToken !== ''){
+        console.log("PASÓ?")
         if(bearerToken === process.env.TOKEN){
             next()
         }else{
             res.send(403)
         }
     }else{
+        console.log("PA JUERA")
         res.sendStatus(403)
     }
 

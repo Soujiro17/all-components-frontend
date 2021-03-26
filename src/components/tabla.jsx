@@ -36,7 +36,7 @@ export default function Tabla() {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin' : '*',
       'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-      'Authorization': 'Bearer ' + process.env.TOKEN
+      'Authorization': process.env.TOKEN
     }
     await axios.get(process.env.API_URL, {headers: headers}).then(response => {
         setData(toRow(response.data))
