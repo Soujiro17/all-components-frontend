@@ -42,6 +42,8 @@ export default function Tabla() {
         setData(toRow(response.data))
         console.log(response)
         console.log(response.data)
+        console.log(process.env.API_URL)
+        console.log(typeof process.env.API_URL)
     });
   }
 
