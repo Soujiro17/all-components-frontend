@@ -44,12 +44,7 @@ export default function Tabla() {
       });
     }catch(err){
       console.log("error: ", err)
-      console.log("api: ", process.env.REACT_APP_API)
-      console.log("host: ", process.env.REACT_APP_API_URL)
     }
-
-    console.log("api: ", process.env.REACT_APP_API)
-    console.log("host: ", process.env.REACT_APP_API_URL)
   }
 
   return (
@@ -60,8 +55,6 @@ export default function Tabla() {
         pagination 
         pageSize={15}
         />
-        <p>API: {process.env.REACT_APP_API}</p>
-        <p>Host: {process.env.REACT_APP_API_URL}</p>
     </div>
   );
 }
