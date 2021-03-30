@@ -75,6 +75,8 @@ app.use(express.static(path.resolve(__dirname, `./build`)));
 
 app.post("/", verifyToken, (req, res) => {
     
+    console.log("req: ", req)
+    console.log("req.body: ", req.body)
     const data = req.body
     jsonReader('./data.json', (err, customer) => {
         if (err) {
