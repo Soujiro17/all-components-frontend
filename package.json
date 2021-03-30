@@ -27,6 +27,7 @@
   },
   "scripts": {
     "start": "npx nodemon server.js",
+    "aws": "pm2 start server.js",
     "local": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "winBuild": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
