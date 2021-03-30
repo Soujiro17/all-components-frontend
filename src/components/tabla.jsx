@@ -61,6 +61,8 @@ export default function Tabla() {
         pagination 
         pageSize={15}
         />
+        <p>API: {process.env.REACT_APP_API}</p>
+        <p>Host: {process.env.REACT_APP_API_URL}</p>
     </div>
   );
 }
