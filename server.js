@@ -67,7 +67,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", verifyToken, (req, res) => {
-
+    console.log(data)
     res.json(data)
 });
 
