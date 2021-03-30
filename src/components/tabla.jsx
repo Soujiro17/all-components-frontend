@@ -48,7 +48,6 @@ export default function Tabla() {
       console.log("host: ", process.env.REACT_APP_API_URL)
     }
 
-    console.log("error: ", err)
     console.log("api: ", process.env.REACT_APP_API)
     console.log("host: ", process.env.REACT_APP_API_URL)
   }
