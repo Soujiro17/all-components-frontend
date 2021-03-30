@@ -61,13 +61,13 @@ app.get("/", (req, res) => {
     if (err) {
       return console.log(err);
     }
-    console.log("hola, si funciona el sv")
+
     res.send(data)
   });
 });
 
 app.get("/data", verifyToken, (req, res) => {
-    console.log("funciona esto?")
+
     res.json(data)
 });
 

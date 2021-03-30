@@ -43,7 +43,9 @@ export default function Tabla() {
           setData(toRow(response.data))
       });
     }catch(err){
-      console.log("error:", err)
+      console.log("error: ", err)
+      console.log("api: ", process.env.REACT_APP_API)
+      console.log("host: ", process.env.REACT_APP_API_URL)
     }
   }
 
