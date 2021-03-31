@@ -9,6 +9,7 @@ const columns = [
     { field: 'priceProduct', headerName: 'Precio', width: 130 },
     { field: 'linkProduct', headerName: 'Link', width: 900 },
     { field: 'stockProduct', headerName: 'Stock', width: 150 },
+    { field: 'fechaProduct', headerName: 'Fecha de actualización', width: 150 },
 ];
 
 const toRow = (data) => {
@@ -19,7 +20,7 @@ const toRow = (data) => {
     }
 
     for(let x = 0; x<data.products.length; x++){
-        row.push({ id: x, productName: data.products[x], priceProduct: parseInt(data.prices[x]), linkProduct: data.links[x], stockProduct: data.stock[x]})
+        row.push({ id: x, productName: data.products[x], priceProduct: parseInt(data.prices[x]), linkProduct: data.links[x], stockProduct: data.stock[x], fechaProduct: data.fecha[x]})
     }
     return row
 }

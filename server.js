@@ -75,9 +75,8 @@ app.use(express.static(path.resolve(__dirname, `./build`)));
 
 app.post("/", verifyToken, (req, res) => {
     
-    console.log("req: ", req)
-    console.log("req.body: ", req.body)
     const data = req.body
+
     jsonReader('./data.json', (err, customer) => {
         if (err) {
             console.log('Error reading file:',err)
@@ -89,11 +88,13 @@ app.post("/", verifyToken, (req, res) => {
                 const index = customer.products.indexOf(data.products[x])
                 customer.prices[index] = data.prices[x]
                 customer.stock[index] = data.stock[x]
+                customer.fecha[index] = data.fecha[x]
             }else{
                 customer.products.push(data.products[x]) 
                 customer.prices.push(data.prices[x]) 
                 customer.links.push(data.links[x]) 
                 customer.stock.push(data.stock[x]) 
+                customer.fecha.push(data.fecha[x])
             }
         }
     fs.writeFile('./data.json', JSON.stringify(customer, null, 2), (err) => {
