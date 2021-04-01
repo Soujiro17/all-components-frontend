@@ -67,7 +67,6 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", verifyToken, (req, res) => {
-    console.log(data)
     res.json(data)
 });
 
@@ -107,7 +106,7 @@ app.post("/", verifyToken, (req, res) => {
     
 })
 
-app.post("/del", verifyToken, (req, res) => {
+app.get("/del", verifyToken, (req, res) => {
 
     const empty = { 
         "products": [], 
