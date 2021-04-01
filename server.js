@@ -110,6 +110,7 @@ app.post("/", verifyToken, (req, res) => {
 app.post("/del", verifyToken, (req, res) => {
     
     const data = req.body
+    
     const empty = { 
         "products": [], 
         "prices": [], 
