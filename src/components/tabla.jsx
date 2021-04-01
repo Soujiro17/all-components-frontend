@@ -49,7 +49,7 @@ export default function Tabla() {
   }
 
   return (
-    <div style={{ height: '80vh', width: '70vw', margin: 'auto', backgroundColor: 'rgba(255,255,255,0.6)',}}>
+    <div style={{ height: '80vh', width: '70vw', margin: 'auto', backgroundColor: 'rgba(255,255,255,0.6)' }}>
       <XGrid
         rows={data} 
         columns={columns}
