@@ -114,7 +114,8 @@ app.post("/del", verifyToken, (req, res) => {
         "products": [], 
         "prices": [], 
         "links": [], 
-        "stock": [] 
+        "stock": [],
+        "fecha": []
     }
 
     fs.writeFile('./data.json', JSON.stringify(empty, null, 2), (err) => {
