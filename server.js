@@ -8,6 +8,8 @@ const fs = require("fs");
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const data = require('./data.json');
+const axios = require('axios')
+
 
 // ----------------------- FUNCTIONS ----------------------//
 
@@ -121,5 +123,5 @@ app.get("/del", verifyToken, (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`App listening on http://localhost:${port}`)
+    console.log(`Server running on port ${port}`)
 })

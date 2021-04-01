@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'
+import axiosInstance from '../services/axios'
 import { DataGrid } from '@material-ui/data-grid';
 require('dotenv').config()
 
@@ -40,14 +40,8 @@ export default function Tabla() {
   }, [])
 
   const fetchingData = async () => {
-    const headers = {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin' : '*',
-      'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-      'Authorization': process.env.REACT_APP_API
-    }
     try{
-      await axios.get(process.env.REACT_APP_API_URL, {headers: headers}).then(response => {
+      await axiosInstance.get('/data').then(response => {
           setData(toRow(response.data))
       });
     }catch(err){
