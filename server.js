@@ -108,18 +108,14 @@ app.post("/", verifyToken, (req, res) => {
 })
 
 app.post("/del", verifyToken, (req, res) => {
-    
-    const data = req.body
-    
-    let empty = { 
+
+    const empty = { 
         "products": [], 
         "prices": [], 
         "links": [], 
         "stock": [],
         "fecha": []
     }
-
-    empty = JSON.parse(empty)
 
     fs.writeFile('./data.json', JSON.stringify(empty, null, 2), (err) => {
             if (err) console.log('Error writing file:', err)
