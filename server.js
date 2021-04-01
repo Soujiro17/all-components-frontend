@@ -29,6 +29,8 @@ function verifyToken(req, res, next){
 
     const bearerToken = req.headers['authorization'];
 
+    console.log(req.headers['host'])
+
     if(typeof bearerToken !== 'undefined' && bearerToken !== ''){
         if(bearerToken === process.env.REACT_APP_API){
             next()
