@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require("path");
-const port = process.env.PORT;
+const port = process.env.REACT_APP_PORT || 3000;
 const fs = require("fs");
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -83,26 +83,19 @@ app.post("/", verifyToken, (req, res) => {
         }
 
         for(let x = 0; x<data.products.length; x++){
-            if(customer.products.includes(data.products[x])){
-                const index = customer.products.indexOf(data.products[x])
-                customer.prices[index] = data.prices[x]
-                customer.stock[index] = data.stock[x]
-                customer.fecha[index] = data.fecha[x]
-            }else{
-                customer.products.push(data.products[x]) 
-                customer.prices.push(data.prices[x]) 
-                customer.links.push(data.links[x]) 
-                customer.stock.push(data.stock[x]) 
-                customer.fecha.push(data.fecha[x])
-            }
+            customer.products.push(data.products[x]) 
+            customer.prices.push(data.prices[x]) 
+            customer.links.push(data.links[x]) 
+            customer.stock.push(data.stock[x]) 
+            customer.fecha.push(data.fecha[x])
         }
     fs.writeFile('./data.json', JSON.stringify(customer, null, 2), (err) => {
             if (err) console.log('Error writing file:', err)
         })
     })
 
-    console.log("received")
-    res.send("received")
+    console.log("Data received")
+    res.send("Data received")
     
 })
 
@@ -120,11 +113,11 @@ app.get("/del", verifyToken, (req, res) => {
             if (err) console.log('Error writing file:', err)
     })
     
-    console.log("deleted")
-    return res.send("deleted")
+    console.log("Data deleted")
+    return res.send("Data deleted")
 
 })
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`App listening on http://localhost:${port}`)
 })

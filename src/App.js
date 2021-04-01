@@ -1,10 +1,14 @@
 import Tabla from './components/tabla'
+import Header from './components/header/header'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Tabla></Tabla>
+      <Header></Header>
+      <div className = "table-container">
+        <Tabla></Tabla>
+      </div>
     </div>
   );
 }
