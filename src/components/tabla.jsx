@@ -5,11 +5,11 @@ require('dotenv').config()
 
 const columns = [
     { field: 'id', headerName: 'id', width: 50 },
-    { field: 'productName', headerName: 'Producto', width: 600 },
+    { field: 'productName', headerName: 'Producto', width: 400 },
     { field: 'priceProduct', headerName: 'Precio', width: 130 },
-    { field: 'linkProduct', headerName: 'Link', width: 900 },
+    { field: 'linkProduct', headerName: 'Link', width: 400 },
     { field: 'stockProduct', headerName: 'Stock', width: 150 },
-    { field: 'fechaProduct', headerName: 'Fecha de actualización', width: 150 },
+    { field: 'fechaProduct', headerName: 'Fecha de actualización', width: 200 },
 ];
 
 const toRow = (data) => {
@@ -49,7 +49,7 @@ export default function Tabla() {
   }
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: '80vh', width: '70vw', margin: 'auto' }}>
       <XGrid
         rows={data} 
         columns={columns}
