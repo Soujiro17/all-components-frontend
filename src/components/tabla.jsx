@@ -20,15 +20,23 @@ const columns = [
 ];
 
 const toRow = (data) => {
-    let row = []
+    let row = [], count = 1
 
     if(data === undefined){
       return row
     }
 
-    for(let x = 0; x<data.products.length; x++){
-        row.push({ id: x+1, productName: data.products[x], priceProduct: parseInt(data.prices[x]), linkProduct: data.links[x], stockProduct: data.stock[x], fechaProduct: data.fecha[x]})
-    }
+    data.map(item => {
+        row.push({ 
+          id: count++, 
+          productName: item["product"], 
+          priceProduct: parseInt(item["price"]), 
+          linkProduct: item["link"], 
+          stockProduct: item["stock"], 
+          fechaProduct: item.["fecha"]
+        })
+    })
+
     return row
 }
 
