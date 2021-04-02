@@ -15,7 +15,6 @@ const ProductScheme = new Schema({
     link: {
         type: String,
         required: true,
-        unique: true
     },
 
     stock: {
