@@ -69,21 +69,27 @@ app.post("/", verifyToken, async (req, res) => {
     
     const data = req.body
 
-    for(let x = 0; x<data.products.length; x++){
-        
-        const product = new Product({
-            product: data.products[x],
-            price: data.prices[x],
-            link: data.links[x],
-            stock: data.stock[x],
-            fecha: data.fecha[x]
-        })
-        
-        await product.save()
+    try{
+        for(let x = 0; x<data.products.length; x++){
+            
+            const product = new Product({
+                product: data.products[x],
+                price: data.prices[x],
+                link: data.links[x],
+                stock: data.stock[x],
+                fecha: data.fecha[x]
+            })
+            
+            await product.save()
+        }
+        console.log("Data received")
+        res.send("Data received")
+    }catch(err){
+        console.log('Error: ', err)
+        res.send("Error: data not received")
     }
 
-    console.log("Data received")
-    res.send("Data received")
+
     
 })
 
