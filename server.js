@@ -85,7 +85,7 @@ app.post("/", verifyToken, async (req, res) => {
         console.log("Data received")
         res.send("Data received")
     }catch(err){
-        console.log('Error: ', err)
+        console.log(err)
         res.send("Error: data not received")
     }
 
@@ -95,13 +95,16 @@ app.post("/", verifyToken, async (req, res) => {
 
 app.get("/del", verifyToken, async (req, res) => {
 
-    if(await (await db.collections.products.remove({})).result["ok"] === 1){
-        console.log("Data deleted")
-        return res.send("Data deleted")
+    try{
+        if(await (await db.collections.products.remove({})).result["ok"] === 1){
+            console.log("Data deleted")
+            return res.send("Data deleted")
+        }
+    }catch(err){
+        console.log(err)
+        return res.send("Error deleting data")
     }
 
-    console.log("Error deleting data")
-    return res.send("Error deleting data")
     
 
 })

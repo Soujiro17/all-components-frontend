@@ -14,7 +14,7 @@ const ProductScheme = new Schema({
 
     link: {
         type: String,
-        required: true,
+        required: true
     },
 
     stock: {
