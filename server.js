@@ -68,7 +68,6 @@ app.use(express.static(path.resolve(__dirname, `./build`)));
 app.post("/", verifyToken, async (req, res) => {
     
     const data = req.body
-    console.log(data.length)
 
     for(let x = 0; x<data.products.length; x++){
         
