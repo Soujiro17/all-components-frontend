@@ -7,18 +7,18 @@ import EjemploDos from '../../assets/images/ejemplo2.png'
 
 export default function Usage() {
     return (
-        <div className = "container">
+        <div className = "container-main">
             <Header/>
             <main>
-                <Grid container spacing = {1}>
-                    <Grid xs = {3} spacing={3}/>
-                    <Grid xs = {6} spacing={3}>
+                <Grid container spacing = {3}>
+                    <Grid xs = {3} item = {true}/>
+                    <Grid xs = {6} item = {true}>
                         <Card style = {{opacity: '0.8', animation: 'zoomIn', animationDuration: '1s'}}>
                             <CardContent>
                                 <Typography variant="h3" component="h2" style = {{textAlign: 'center'}}>
                                     Instrucciones
                                 </Typography>
-                                <Typography component="p" style = {{alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column'}}>
+                                <Typography component="li" style = {{alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column'}}>
                                     El modo de uso de la página es sencillo: Al poner el mouse encima de cualquier categoría 
                                     (producto por ejemplo) te saldrán tres puntos:
                                     <br/>
@@ -51,7 +51,7 @@ export default function Usage() {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid xs = {3} spacing={3}/>
+                    <Grid xs = {3} item = {true}/>
                 </Grid>
             </main>
         </div>

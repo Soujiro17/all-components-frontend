@@ -4,12 +4,12 @@ import { Card, CardContent, Typography, Grid } from '@material-ui/core';
 
 export default function Contact() {
     return (
-        <div className = "container">
+        <div className = "container-main">
             <Header/>
             <main>
-                <Grid container spacing = {1}>
-                    <Grid xs = {3} spacing={3}/>
-                    <Grid xs = {6} spacing={3}>
+                <Grid container spacing = {3}>
+                    <Grid xs = {3} item = {true}/>
+                    <Grid xs = {6} item = {true}>
                         <Card style = {{opacity: '0.8', animation: 'zoomIn', animationDuration: '1s'}}>
                             <CardContent>
                                 <Typography variant="h3" component="h2" style = {{textAlign: 'center'}}>
@@ -23,7 +23,7 @@ export default function Contact() {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid xs = {3} spacing={3}/>
+                    <Grid xs = {3} item = {true}/>
                 </Grid>
             </main>
         </div>

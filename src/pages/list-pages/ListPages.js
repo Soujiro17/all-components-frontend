@@ -17,25 +17,25 @@ export default function ListPages() {
 
 
     return (
-        <div className = "container">
+        <div className = "container-main">
             <Header/>
             <main>
-                <Grid container spacing = {1}>
-                    <Grid xs = {3} spacing={3}/>
-                    <Grid xs = {6} spacing={3}>
+                <Grid container spacing = {3}>
+                    <Grid xs = {3} item = {true}/>
+                    <Grid xs = {6} item = {true}>
                         <Card style = {{opacity: '0.8', animation: 'zoomIn', animationDuration: '1s'}}>
                             <CardContent>
                                 <Typography variant="h3" component="h2" style = {{textAlign: 'center'}}>
                                     Lista de páginas
                                 </Typography>
-                                <Typography component="p" style = {{alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column'}}>
+                                <Typography component="li" style = {{alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column'}}>
                                     A continuación se mostrará la lista de páginas de las cuales se extrae la información:
                                     <br/>
                                     <ul style = {{display: 'flex', flexWrap: 'wrap'}}>
                                         {
                                             pages.map(element => {
                                                 return(
-                                                    <a href = {element.page_link} target="_blank" rel="noopener noreferrer" style = {{flexBasis: '33.3%', display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'blue'}}>
+                                                    <a key = {element._id} href = {element.page_link} target="_blank" rel="noopener noreferrer" style = {{flexBasis: '33.3%', display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'blue'}}>
                                                         <li>{element.page_name}</li>
                                                     </a>
                                                 )
@@ -46,7 +46,7 @@ export default function ListPages() {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid xs = {3} spacing={3}/>
+                    <Grid xs = {3} item = {true}/>
                 </Grid>
             </main>
         </div>
