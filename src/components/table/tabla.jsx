@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import axiosInstance from '../services/axios'
+import axiosInstance from '../../services/axios'
 import { DataGrid } from '@material-ui/data-grid';
-require('dotenv').config()
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 100 },
-    { field: 'productName', headerName: 'Producto', width: 500 },
-    { field: 'priceProduct', headerName: 'Precio', width: 150 },
+    { field: 'id', headerName: 'ID', width: 80 },
+    { field: 'productName', headerName: 'Producto', width: 580 },
+    { field: 'priceProduct', headerName: 'Precio', width: 120 },
     {
       field: "linkProduct",
       headerName: "Link",
@@ -22,12 +21,8 @@ const columns = [
 const toRow = (data) => {
     let row = [], count = 1
 
-    if(data === undefined){
-      return row
-    }
-
     data.map(item => {
-        row.push({ 
+        return row.push({ 
           id: count++, 
           productName: item["product"], 
           priceProduct: parseInt(item["price"]), 
@@ -48,15 +43,9 @@ export default function Tabla() {
   }, [])
 
   const fetchingData = async () => {
-    try{
-      await axiosInstance.get('/data').then(response => {
-          setData(toRow(response.data))
-      });
-    }catch(err){
-      console.log("error: ", err)
-    }
+    await axiosInstance.get('api/data').then(response => setData(toRow(response.data)));
   }
-
+  
   return (
     <div style={{ height: '80vh', width: '70vw', margin: 'auto', backgroundColor: 'rgba(255,255,255,0.6)', display: 'flex' }}>
       <DataGrid
