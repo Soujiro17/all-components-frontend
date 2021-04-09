@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card } from '../';
-import { Grid } from '@material-ui/core';
+import { Grid, CircularProgress } from '@material-ui/core';
 import ReactPaginate from 'react-paginate';
 import { useState, useEffect } from 'react';
 
@@ -35,30 +35,35 @@ export default function Items({ data, value, orderbyprice }) {
 
         if(orderbyprice === "true"){
             setSearchResults(results.sort((a,b) => a.price - b.price));
+        }else{
+            setSearchResults(results.sort((a,b) => b.price - a.price))
         }
 
     }, [value, data, orderbyprice])
 
     return (
         <>
+            { displayUsers.length? <>
             <Grid container style = {{display: 'flex', justifyContent: 'center', alignItems: 'center', maxHeight: '75vh', height: '75vh'}}>
                 {displayUsers}
             </Grid>
             <div className = "pagination" style = {{width: '100%', display: 'inline-flex', justifyContent: 'center', maxHeight: '7vh', position: 'absolute', bottom: '0', marginBottom: '10px'}}>
-            <div className = "pagination-items">
-                <ReactPaginate
-                previousLabel={"Previous"}
-                nextLabel = {"Next"}
-                pageCount = {pageCount}
-                onPageChange = {changePage}
-                containerClassName = {"pagination"}
-                previousLinkClassName = {"previousBttn"}
-                nextLinkClassName = {"nextBttn"}
-                disabledClassName = {"disabled"}
-                activeClassName = {"active"}
-                />
+                <div className = "pagination-items">
+                    <ReactPaginate
+                    previousLabel={"Previous"}
+                    nextLabel = {"Next"}
+                    pageCount = {pageCount}
+                    onPageChange = {changePage}
+                    containerClassName = {"pagination"}
+                    previousLinkClassName = {"previousBttn"}
+                    nextLinkClassName = {"nextBttn"}
+                    disabledClassName = {"disabled"}
+                    activeClassName = {"active"}
+                    />
+                </div>
             </div>
-            </div>  
+            </> : <CircularProgress color = "white" style = {{margin: 'auto'}}></CircularProgress>
+            }
         </>
     )
 }
