@@ -1,8 +1,9 @@
-import React from 'react'
-import './index.scss'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import './index.scss';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
+
     return (
         <header>
                 <div className="navbar-container">

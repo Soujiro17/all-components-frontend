@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Tabla, Header } from '../../components';
+import { Header } from '../../components';
 import './Home.scss';
 import axiosInstance from '../../services/axios';
+import { Button, Input } from '@material-ui/core';
+import Items from '../../components/items/Items';
 
 function Home() {
 
   const [data, setData ] = useState([]);
+  const [search, setSearch] = useState('');
+  const [orderByPrice, setOrderByPrice] = useState("false");
 
   useEffect(() => {
     fetchingData()
@@ -18,8 +22,15 @@ function Home() {
   return (
     <div className="container-main">
       <Header></Header>
+      <Input
+            placeholder = "Buscar producto"
+            style = {{color: 'white'}}
+            onChange = {(e) => setSearch(e.target.value)}
+            value = {search}
+      />
+      <Button onClick = {() => {setOrderByPrice(orderByPrice === "true"? "false" : "true"); console.log(orderByPrice)}}>Click</Button>
       <div className = "table-container">
-        <Tabla data = {data}></Tabla>
+        <Items data = {data} value = {search} orderbyprice = {orderByPrice}/>
       </div>
     </div>
   );
