@@ -14,8 +14,9 @@ export default function Routes() {
                 <Route exact path = "/" component = {Home} />
                 <Route exact path = "/contact" component = {Contact} />
                 <Route exact path = "/list-pages" component = {ListPages} />
+                <Route exact path = "/admin" component = {Admin}/>
                 {
-                    loggedIn? <Route exact path = "/dashboard" component = {Dashboard}/> : <Route exact path = "/admin" component = {Admin}/>
+                    loggedIn? <Route exact path = "/dashboard" component = {Dashboard}/> : ""
                 }
                 <Redirect to = "/"/>
             </Switch>
