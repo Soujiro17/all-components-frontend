@@ -5,7 +5,7 @@ const axiosInstance = axios.create({
   headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Access-Control-Allow-Origin': "*",
+      'Access-Control-Allow-Origin': "https://all-components-pc.netlify.app/",
       'Access-Control-Allow-Methods': "GET, POST, PATCH, PUT, DELETE, OPTIONS",
       'Access-Control-Allow-Headers': "Origin, Content-Type, X-Auth-Token"
     }
