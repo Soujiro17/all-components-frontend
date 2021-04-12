@@ -18,8 +18,9 @@ export default function Admin() {
 
     const handleLogin = async () => {
         try{ 
-            await axiosInstance.post('/auth/login', {email, password})
-                .then(async () => {
+
+            await axiosInstance.post('auth/login', {email, password})
+                .then(async (res) => {
                     
                     await getLoggedIn();
                     M.toast({html: "Logged in", classes: "green", displayLength: 1500})

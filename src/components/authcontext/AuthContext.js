@@ -9,13 +9,13 @@ const AuthContextProvider = (props) => {
     
     const getLoggedIn = async () => {
         const loggedInRes = await axiosInstance.get('auth/loggedIn');
+        
         setLoggedIn(loggedInRes.data);
     }
     
     useEffect(() =>{
         getLoggedIn()
-
-    }, [])
+    })
 
     return (
         <AuthContext.Provider value = {{ loggedIn, getLoggedIn }}>

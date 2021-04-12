@@ -15,7 +15,7 @@ export default function Header() {
                         <Link to = '/contact'><li>Contacto</li></Link>
                         <Link to = '/list-pages'><li>Lista de páginas</li></Link>
                         {
-                            loggedIn? <><Link to = '/dashboard'><li>Dashboard</li></Link></> : <Link to = '/admin'><li>Admin</li></Link>
+                            loggedIn? <><Link to = '/dashboard'><li>Dashboard</li></Link></> : <><Link to = '/admin'><li>Admin</li></Link></>
                         }
                     </ul>
                 </div>
