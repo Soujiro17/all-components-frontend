@@ -16,8 +16,8 @@ export default function Card({ title, stock, link, image, price}) {
         <div className="row">
             <div className="col s9">
                 <div className="card" style = {{textAlign: 'center', width: '200px', height: '320px'}}>
-                    <div className="card-image">
-                        <img src={image} alt = {title}/>
+                    <div className="card-image" style = {{display: 'flex', justifyContent: 'center'}}>
+                        <img src={image} alt = {title} style = {{height: '16vh', width: '8vw'}}/>
                     </div>
                     <div className="card-content" style = {{padding: '10px'}}>
                         <p>{add3Dots(title, 30)}</p>

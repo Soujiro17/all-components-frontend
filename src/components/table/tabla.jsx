@@ -21,6 +21,7 @@ const columns = [
     }},
     { field: 'stockProduct', headerName: 'Stock', width: 200 },
     { field: 'fechaProduct', headerName: 'Fecha de actualización', width: 200 },
+    { field: 'imageProduct', headerName: 'URL Imágen', width: 200 }
 
 ];
 
@@ -45,7 +46,8 @@ const toRow = (data) => {
           priceProduct: parseInt(item["price"]), 
           linkProduct: item["link"], 
           stockProduct: item["stock"], 
-          fechaProduct: item.["fecha"]
+          fechaProduct: item["fecha"],
+          imageProduct: item["img_link"]
         })
     })
 

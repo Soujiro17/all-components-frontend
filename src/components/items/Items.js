@@ -15,7 +15,7 @@ export default function Items({ data, value, orderbyprice }) {
     const displayUsers = searchResults.slice(pagesVisited, pagesVisited + productPerPage).map(element => {
         return(
         <Grid key = {element._id} item xs = {2} style = {{maxWidth: '200px', maxHeight: '320px', margin: '10px'}}>
-            <Card title = {element.product} stock = {element.stock} price = {element.price} link = {element.link} image = "https://materializecss.com/images/sample-1.jpg" />
+            <Card title = {element.product} stock = {element.stock} price = {element.price} link = {element.link} image = {element.img_link} />
         </Grid>
         )
     });
@@ -62,7 +62,7 @@ export default function Items({ data, value, orderbyprice }) {
                     />
                 </div>
             </div>
-            </> : <CircularProgress color = "white" style = {{margin: 'auto'}}></CircularProgress>
+            </> : <CircularProgress color = "inherit" style = {{margin: 'auto'}}></CircularProgress>
             }
         </>
     )

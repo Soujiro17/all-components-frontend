@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Grid } from '@material-ui/core';
 import axiosInstance from '../../services/axios';
-import { Tabla } from '../../components/';
+import { LogoutButton, Tabla } from '../../components/';
 import { FormControl, TextField } from '@material-ui/core';
 import M from 'materialize-css';
 
@@ -14,6 +14,7 @@ export default function Dashboard() {
     const [link, setLink] = useState('');
     const [stock, setStock] = useState('');
     const [fecha, setFecha] = useState('');
+    const [imageURL, setImageURL] = useState('');
 
     useEffect(() => {
         fetchingData()
@@ -24,7 +25,7 @@ export default function Dashboard() {
     }
 
     const getProduct = async () => {
-        if(id)
+        if(id){
             await axiosInstance.get(`api/data/${id}`)
                 .then(response => {
                     setTitle(response.data.product);
@@ -32,16 +33,17 @@ export default function Dashboard() {
                     setLink(response.data.link);
                     setStock(response.data.stock);
                     setFecha(response.data.fecha);
+                    setImageURL(response.data.img_link);
                 })
-                .catch(err => M.toast({html: 'Product not found', classes: "red", displayLength: 1500}));
+                .catch(() => M.toast({html: 'Product not found', classes: "red", displayLength: 1500}));
+        }
+
         else M.toast({html: "Product not found", classes: "red", displayLength: 1500});
     }
 
     const saveProduct = async () => {
-        await axiosInstance.put(`api/data/${id}`, {
-            data: { product: title, price, link, stock, fecha }
-        })
-            .then(response => {
+        await axiosInstance.put(`api/data/${id}`, { data: { product: title, price, link, stock, fecha, img_link: imageURL } })
+            .then(() => {
                 fetchingData();
                 M.toast({html: 'Product updated!', classes: 'green', displayLength: 1500});
                 setTitle('');
@@ -49,9 +51,10 @@ export default function Dashboard() {
                 setLink('');
                 setStock('');
                 setFecha('');
+                setImageURL('');
                 setID('');
             })
-            .catch(err => M.toast({html: 'Error updating product', classes: "red", displayLength: 1500}));
+            .catch(() => M.toast({html: 'Error updating product', classes: "red", displayLength: 1500}));
     }
 
     return (
@@ -79,12 +82,14 @@ export default function Dashboard() {
                                     <TextField label="Link" multiline rowsMax={4} variant="filled" value = {link} onChange = {(e) => setLink(e.target.value)}/>
                                     <TextField label="Stock" multiline rowsMax={4} variant="filled" value = {stock} onChange = {(e) => setStock(e.target.value)}/>
                                     <TextField label="Fecha" multiline rowsMax={4} variant="filled" value = {fecha} onChange = {(e) => setFecha(e.target.value)}/>
+                                    <TextField label="URL Imágen" multiline rowsMax={4} variant="filled" value = {imageURL} onChange = {(e) => setImageURL(e.target.value)}/>
                                     <Button onClick = {saveProduct} type = "submit" style = {{margin: '10px'}}>Update</Button>
                                 </>
                             ) : false
                         }
                         
                     </FormControl>
+                    <LogoutButton/>
                 </Grid>
             </Grid>
         </div>
