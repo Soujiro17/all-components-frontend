@@ -15,11 +15,20 @@ export default function Routes() {
                 <Route exact path = "/contact" component = {Contact} />
                 <Route exact path = "/list-pages" component = {ListPages} />
                 <Route exact path = "/admin" component = {Admin}/>
-                {
-                    loggedIn? <Route exact path = "/dashboard" component = {Dashboard}/> : null
-                }
+                <PrivateRoute exact path = "/dashboard" component = {Dashboard} authed = {loggedIn}/>
                 <Redirect to = "/"/>
             </Switch>
         </BrowserRouter>
+    )
+}
+
+const PrivateRoute = ({component: Component, authed, ...rest}) => {
+    return (
+      <Route
+        {...rest}
+        render = {(props) => authed
+          ? <Component {...props} />
+          : <Redirect to = {{pathname: '/', state: {from: props.location}}} />}
+      />
     )
 }
