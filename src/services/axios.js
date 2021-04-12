@@ -5,7 +5,9 @@ const axiosInstance = axios.create({
   headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': 'WvUxYCWxGyyWQjnp-hLr1sQagz6yALDXXoiGLHAeQGJTFfvFl4CCEyN8qWnMKgQBPzl_d-gMK9Xhhxl0UZRdCFcGdeuCusmrctlOpUDOB2KNejiGWcStqNNEe9B1hixOFyu8_nAK2NwiLyOTuNP0IIU8ynHbej_nNeubOhKkSeM'
+      'Access-Control-Allow-Origin': "*",
+      'Access-Control-Allow-Methods': "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+      'Access-Control-Allow-Headers': "Origin, Content-Type, X-Auth-Token"
     }
 });
 
