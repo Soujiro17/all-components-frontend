@@ -4,15 +4,16 @@ import { Grid, CircularProgress } from '@material-ui/core';
 import ReactPaginate from 'react-paginate';
 import { useState, useEffect } from 'react';
 
-export default function Items({ data, value, orderbyprice }) {
+export default function Items({ data, orderbyprice }) {
+
+    const [results, setResults] = useState(data);
 
     const [pageNumber, setPageNumber ] = useState(0);
-    const [searchResults, setSearchResults ] = useState([]);
 
 
     const productPerPage = 16;
     const pagesVisited = pageNumber * productPerPage;
-    const displayUsers = searchResults.slice(pagesVisited, pagesVisited + productPerPage).map(element => {
+    const displayUsers = results.slice(pagesVisited, pagesVisited + productPerPage).map(element => {
         return(
         <Grid key = {element._id} item xs = {2} style = {{maxWidth: '200px', maxHeight: '320px', margin: '10px'}}>
             <Card title = {element.product} stock = {element.stock} price = {element.price} link = {element.link} image = {element.img_link} />
@@ -20,26 +21,20 @@ export default function Items({ data, value, orderbyprice }) {
         )
     });
 
-    const pageCount = Math.ceil(searchResults.length / productPerPage)
+    const pageCount = Math.ceil(results.length / productPerPage)
     const changePage = ({ selected }) => {
         setPageNumber(selected);
     }
 
     useEffect(() => {
 
-        const results = data.filter(item => {
-            return item.product.toLowerCase().includes(value.trim());
-        })
-
-        setSearchResults(results);
-
         if(orderbyprice === "true"){
-            setSearchResults(results.sort((a,b) => a.price - b.price));
+            setResults(data.sort((a,b) => a.price - b.price));
         }else{
-            setSearchResults(results.sort((a,b) => b.price - a.price))
+            setResults(data.sort((a,b) => b.price - a.price))
         }
 
-    }, [value, data, orderbyprice])
+    }, [data, setResults, orderbyprice])
 
     return (
         <>

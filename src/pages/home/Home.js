@@ -3,6 +3,7 @@ import { Header, Items } from '../../components';
 import './Home.scss';
 import axiosInstance from '../../services/axios';
 import { Button, Input } from '@material-ui/core';
+import M from 'materialize-css';
 
 function Home() {
 
@@ -12,6 +13,12 @@ function Home() {
   
   const fetchingData = async () => {
     await axiosInstance.get(`api/data`).then(response => setData(response.data));
+  }
+
+  const findProduct = async () => {
+    await axiosInstance.get(`api/data/find?search=${search}`)
+      .then(res => setData(res.data))
+      .catch(() => M.toast({html: "Producto no encontrado", classes: "red", displayLength: 1500}))
   }
   
   useEffect(() => {
@@ -28,10 +35,11 @@ function Home() {
           value={search}
           style = {{marginRight: 'auto'}}
         />
+        <Button onClick = {findProduct}>Buscar</Button>
         <Button onClick={() => setOrderByPrice(orderByPrice ? false : true)}>Ordenado de: {orderByPrice? "menor a mayor": "mayor a menor"}</Button>
       </div>
       <div className="table-container">
-          <Items data={data} value={search} orderbyprice={orderByPrice.toString()} />
+          <Items data={data} setData = {setData} orderbyprice={orderByPrice.toString()} />
       </div>
     </div>
   );
