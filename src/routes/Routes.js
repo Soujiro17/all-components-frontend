@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useContext } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import AuthContext from '../components/authcontext/AuthContext';
