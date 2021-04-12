@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Routes from './routes/Routes';
 import { AuthContextProvider } from './components/authcontext/AuthContext.js';
+import axiosInstance from './services/axios';
+import axios from 'axios';
+
+axiosInstance.defaults.withCredentials = true
+axios.defaults.withCredentials = true
 
 ReactDOM.render(
   <React.StrictMode>

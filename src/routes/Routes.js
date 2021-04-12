@@ -2,11 +2,7 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import AuthContext from '../components/authcontext/AuthContext';
-import { Contact, Home, ListPages, Admin, Dashboard } from '../pages/' ;
-import axiosInstance from '../services/axios';
-
-axiosInstance.defaults.withCredentials = true
-axios.defaults.withCredentials = true
+import { Contact, Home, ListPages, Admin, Dashboard } from '../pages/';
 
 export default function Routes() {
     
