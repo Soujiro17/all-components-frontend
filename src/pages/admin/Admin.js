@@ -6,6 +6,7 @@ import { FormControl, InputLabel, Input, Button, IconButton, InputAdornment } fr
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import AuthContext from '../../components/authcontext/AuthContext';
 import { useHistory } from 'react-router';
+import { Header } from '../../components';
 
 export default function Admin() {
 
@@ -33,35 +34,38 @@ export default function Admin() {
     }
 
     return (
-        <div className = "container-main" style = {{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
-            <FormControl>
-                <InputLabel htmlFor="standard-adornment-email">Email</InputLabel>
-                <Input
-                    id="standard-adornment-email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </FormControl>
-            <FormControl>
-                <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-                <Input
-                    id="standard-adornment-password"
-                    type={showPassword ? 'text' : 'password'}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    endAdornment={
-                    <InputAdornment position="end">
-                        <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={() => setShowPassword(showPassword? false : true)}
-                        >
-                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                        </IconButton>
-                    </InputAdornment>
-                    }
-                />
-            </FormControl>
-            <Button type = "submit" onClick = {handleLogin}>Log in</Button>
+        <div className = "container-main">
+            <Header/>
+            <div className = "admin-panel" style = {{height: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+                <FormControl style = {{width: '250px'}}>
+                    <InputLabel htmlFor="standard-adornment-email">Email</InputLabel>
+                    <Input
+                        id="standard-adornment-email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </FormControl>
+                <FormControl>
+                    <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+                    <Input
+                        id="standard-adornment-password"
+                        type={showPassword ? 'text' : 'password'}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        endAdornment={
+                        <InputAdornment position="end">
+                            <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={() => setShowPassword(showPassword? false : true)}
+                            >
+                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                            </IconButton>
+                        </InputAdornment>
+                        }
+                    />
+                </FormControl>
+                <Button type = "submit" onClick = {handleLogin}>Log in</Button>
+            </div>
         </div>
     )
 }

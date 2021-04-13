@@ -7,9 +7,9 @@ export default function Contact() {
         <div className = "container-main">
             <Header/>
             <main>
-                <Grid container spacing = {3}>
-                    <Grid xs = {3} item = {true}/>
-                    <Grid xs = {6} item = {true}>
+                <Grid container style = {{display: 'flex', justifyContent: 'center'}}>
+                    <Grid xs = {3} item/>
+                    <Grid xs = {6} item style = {{maxWidth: '100%'}}>
                         <Card style = {{opacity: '0.8', animation: 'zoomIn', animationDuration: '1s'}}>
                             <CardContent>
                                 <Typography variant="h3" component="h2" style = {{textAlign: 'center'}}>
@@ -23,7 +23,7 @@ export default function Contact() {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid xs = {3} item = {true}/>
+                    <Grid xs = {3} item />
                 </Grid>
             </main>
         </div>
