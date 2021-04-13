@@ -39,7 +39,7 @@ function Home() {
           <Button onClick = {findProduct}>Buscar</Button>
           <Button onClick={() => setOrderByPrice(orderByPrice ? false : true)}>Ordenado de: {orderByPrice? "mayor a menor" : "menor a mayor"}</Button>
         </div>
-          <Items data={data} setData = {setData} orderbyprice={orderByPrice.toString()} />
+        <Items data={data} setData = {setData} orderbyprice={orderByPrice.toString()} />
       </div>
     </div>
   );

@@ -42,7 +42,7 @@ export default function Items({ data, orderbyprice }) {
             <Grid container style = {{display: 'flex', justifyContent: 'center', alignItems: 'center', maxHeight: '75vh', maxWidth: '100vw'}}>
                 {displayUsers}
             </Grid>
-            <div className = "pagination" style = {{width: '100%', display: 'flex', justifyContent: 'center', maxHeight: '7vh', bottom: '0', position: 'absolute'}}>
+            <div className = "pagination" style = {{width: '100%', position: 'fixed', left: '0', bottom: '0', textAlign: 'center', display: 'flex', justifyContent: 'center'}}>
                 <div className = "pagination-items">
                     <ReactPaginate
                     previousLabel={"Previous"}
