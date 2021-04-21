@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Header, Items } from '../../components';
 import './Home.scss';
 import axiosInstance from '../../services/axios';
@@ -10,8 +10,10 @@ function Home() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState('');
   const [orderByPrice, setOrderByPrice] = useState(false);
+  const [fetchOnLoad, setFetchOnLoad] = useState(true);
   
   const fetchingData = async () => {
+    setFetchOnLoad(false);
     await axiosInstance.get(`api/data`).then(response => setData(response.data));
   }
 
@@ -21,10 +23,12 @@ function Home() {
       .catch(() => M.toast({html: "Producto no encontrado", classes: "red", displayLength: 1500}))
   }
 
+  if(fetchOnLoad) return fetchingData()
+
   return (
     <div className="container-main" style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <Header></Header>
-      <div className="table-container" onLoad = {fetchingData}>
+      <div className="table-container" >
         <div className = "options-bar">
           <Input
             placeholder="Buscar producto"
