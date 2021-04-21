@@ -24,7 +24,7 @@ function Home() {
   return (
     <div className="container-main" style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <Header></Header>
-      <div className="table-container">
+      <div className="table-container" onLoad = {fetchingData}>
         <div className = "options-bar">
           <Input
             placeholder="Buscar producto"
