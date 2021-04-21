@@ -20,10 +20,6 @@ function Home() {
       .then(res => setData(res.data))
       .catch(() => M.toast({html: "Producto no encontrado", classes: "red", displayLength: 1500}))
   }
-  
-  useEffect(() => {
-    fetchingData()
-  }, [])
 
   return (
     <div className="container-main" style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
